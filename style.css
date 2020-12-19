@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+:root {
+  --primaryColor: #fff;
+  --navColor1: #21292c;
+  --navColor2: #aa3e39;
+  --navColor3: #aa6e39;
+  --navColor4: #236267;
+  --navColor5: #2c8437;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #000;
+  font-family: Nunito, sans-serif;
+}
+
+/* --- Navigation Menu ------------------------------ */
+
+/* Overlay menu */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.7);
+  z-index: 9;
+  transform: translateX(-100vw);
+}
+
+.overlay-slide-right {
+  transition: all .4s ease-in-out;
+  transform: translateX(0vw)
+}
+
+.overlay-slide-left {
+  transition: all .4s ease-in-out;
+  transform: translateX(-100vw)
+}
+
+/* Navigation */
+nav, nav ul {
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  list-style-type: none;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+nav ul li {
+  height: 20%;
+  overflow: hidden;
+}
+
+nav ul li a {
+  color: #fff;
+  position: relative;
+  top: 45%;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  display: block;
+  text-align: center;
+  transition: all .4s;
+}
+
+nav ul li a:hover {
+  transform: scale(1.2);
+}
+
+nav ul li a:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20vw;
+  height: 2px;
+  background: var(--primaryColor);
+  opacity: 0;
+}
+
+nav ul li a:hover::before {
+  opacity: 1;
+}
+
+#nav-1{
+  background-color: var(--navColor1);
+}
+
+#nav-2{
+  background-color: var(--navColor2);
+}
+
+#nav-3{
+  background-color: var(--navColor3);
+}
+
+#nav-4{
+  background-color: var(--navColor4);
+}
+
+#nav-5{
+  background-color: var(--navColor5);
+}
+
+/* Animation navigation items - Slide in */
+
+.slide-in-1 {
+  animation: slidein 0.4s linear 0.2s both;
+}
+
+.slide-in-2 {
+  animation: slidein 0.4s linear 0.4s both;
+}
+
+.slide-in-3 {
+  animation: slidein 0.4s linear 0.6s both;
+}
+
+.slide-in-4 {
+  animation: slidein 0.4s linear 0.8s both;
+}
+
+.slide-in-5 {
+  animation: slidein 0.4s linear 1s both;
+}
+
+@keyframes slidein {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0%); }
+}
+
+.slide-out-1 {
+  animation: slideout 0.4s linear 0.5s both;
+}
+
+.slide-out-2 {
+  animation: slideout 0.4s linear 0.4s both;
+}
+
+.slide-out-3 {
+  animation: slideout 0.4s linear 0.3s both;
+}
+
+.slide-out-4 {
+  animation: slideout 0.4s linear 0.2s both;
+}
+
+.slide-out-5 {
+  animation: slideout 0.4s linear 0.1s both;
+}
+
+@keyframes slideout {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+
+/* --- Menu Bars ------------------------------------ */
+
+.menu-bars {
+  position: fixed;
+  top: 1rem;
+  right: 2rem;
+  z-index: 10;
+  display: inline;
+  cursor: pointer;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  width: 35px;
+  height: 2px;
+  background-color: var(--primaryColor);
+  margin: 8px 0;
+  transition: 0.4s;
+}
+
+/* Rotate first bar */
+.change .bar1 {
+  transform: rotate(-45deg) translate(-7px, 8px);
+}
+
+/* Fade out the second bar */
+.change .bar2 {
+  opacity: 0;
+}
+
+/* Rotate last bar */
+.change .bar3 {
+  transform: rotate(45deg) translate(-6px, -8px);
+}
+
+/* --- Sections ------------------------------------ */
+
+section {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--primaryColor);
+}
+
+section#home {
+  background-image: url("https://images.unsplash.com/photo-1581453904507-626ddb717f14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80");
+  background-size: cover;
+  background-position: center center;
+}
+
+section#home a {
+  position: absolute;
+  z-index: 2;
+  top: 1.5rem;
+  left: 1.5rem;
+  text-decoration: none;
+  font-size: 0.8rem;
+  padding-bottom: 5px;
+  color: var(--primaryColor);
+  border-bottom: 1px solid var(--primaryColor);
+}
+
+section#about {
+  background-color: var(--navColor2);
+}
+
+section#skills {
+  background-color: var(--navColor3);
+}
+
+section#projects {
+  background-color: var(--navColor4);
+}
+
+section#contact {
+  background-color: var(--navColor5);
+}
+
+/* Media Query: Large Smartphone (Vertical) */
+@media (max-width: 600px) {
+  section#home a {
+    top: 1rem;
+    left: 1rem;
+  }
+
+  .menu-bars {
+    top: 0.5rem;
+    right: 1rem;
+  }
+}
